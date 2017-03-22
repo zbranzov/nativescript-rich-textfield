@@ -1,89 +1,71 @@
-# Develop a NativeScript plugin now (w/ TypeScript) [![Build Status](https://travis-ci.org/NativeScript/nativescript-plugin-seed.svg?branch=master)](https://travis-ci.org/NativeScript/nativescript-plugin-seed)
+# Nativescript-rich-textfield [![Build Status](https://travis-ci.org/zbranzov/nativescript-rich-textfield.svg?branch=master)](https://travis-ci.org/NativeScript/nativescript-rich-textfield)
 
-## Getting started
+## Prerequisites
 
-1. `git clone https://github.com/NathanWalker/nativescript-plugin-seed.git myplugin`
-2. `cd myplugin`
-3. `npm run postclone`
-4. `npm run setup`
-5. Get to work.
+This plugin is using [FontAwesome](http://fontawesome.io/) so as a prerequisite you will have to add [**fonts**](https://github.com/zbranzov/nativescript-rich-textfield/tree/master/demo/app/fonts) folder to your app root  directory containing FontAwesome **.ttf** file.
 
-This seed expands on several things [presented here](http://developer.telerik.com/featured/creating-nativescript-plugins-in-typescript/).
+## Install
+
+```
+npm install nativescript-rich-textfield --save
+```
 
 ## Usage
 
-The seed is prepared to allow you to test and try out your plugin via the `demo` folder.
-Additionally it provides a proper `.gitignore` to keep GitHub tidy as well as `.npmignore` to ensure everyone is happy when you publish your plugin via npm.
+You will have to add `xmlns:rt="nativescript-rich-textfield"` namespace to your page tag, and then simply use `<rt:RichTextField/>` in order to add the widget to your page.
 
-### Linking to CocoaPod or Android Arsenal plugins
+A few examples:
 
-You will want to create these folders and files in the root:
+![Sample Android](screenshots/android-examples.png)
 
-```
-platforms --
-  ios --
-    Podfile
-  android --
-    include.gradle
-```
-
-Doing so will open up those native apis to your plugin :)
-
-Take a look at these existing plugins for how that can be done very simply:
-
-* [nativescript-cardview](https://github.com/bradmartin/nativescript-cardview/tree/master/platforms)
-* [nativescript-floatingactionbutton](https://github.com/bradmartin/nativescript-floatingactionbutton/tree/master/platforms)
-
-### Typical development workflow:
-
-1. Make changes to plugin files
-2. Make changes in `demo` that would test those changes out
-3. `npm run demo.ios` or `npm run demo.android`  **(must be run from the root directory)**
-
-Those `demo` tasks are just general helpers. You may want to have more granular control on the device and/or emulator you want to run. For that, you can just run things the manual way:
+Code samples in order of appearance:
 
 ```
-cd demo
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
+xmlns:rt="nativescript-rich-textfield">
+  <StackLayout >
 
-// when developing, to ensure the latest code is built into the demo, it's a guarantee to remove the plugin and add it back
-tns plugin remove nativescript-rich-textfield
-tns plugin add ..
+    <rt:RichTextField icon="0xf123" height="60" iconColor="red" fieldHintColor="red" fieldPaddingLeft="20" textPaddingLeft="80" fieldPaddingRight="90" fieldBackgroundColor="transparent"/>
 
-// manual platform adds
-tns platform add ios
-// and/or
-tns platform add android
+    <rt:RichTextField icon="&#xf099;" iconSize="20" iconColor="rgba(240,248,255,1)" fieldHint="Twitter Hint"
+     height="60" style="background-color:rgba(30,144,255,1)" fieldBorderColor="rgba(255,255,255,1)" fieldBottomBorderWidth="2"/>
+
+    <rt:RichTextField icon="&#xf262;" fieldBorderColor="rgba(212,175,55,1)" fieldColor="rgba(138,43,226,1)" fieldHeight="50" height="50" fieldBottomBorderWidth="4"
+     fieldTopBorderWidth="4" iconColor="rgba(138,43,226,0.8)" fieldHintColor="rgba(138,43,226,0.6)" style="background-color:rgba(255,223,0,1);margin-top:10;" />
+
+    <rt:RichTextField icon="&#xf17b;" fieldBorderColor="rgba(124,252,0,1)" fieldHeight="45" height="45" fieldTopBorderWidth="3" iconColor="rgba(173,255,47,1)" 
+     style="background-color:rgba(34,139,34,1);margin-top:10;margin-bottom:10;" fieldColor="rgba(34,139,34,1)" />
+
+     <rt:RichTextField iconSize="15" icon="&#xf028;" iconColor="rgba(1,1,1,1)" style="margin-bottom:10;" fieldBackgroundColor="red" fieldBorderColor="white" fieldBorderWidth="3" 
+      fieldHint="Volume value Hint" fieldHintColor="rgba(1,1,1,0.6)" fieldHeight="45" width="90%" />
+
+    <rt:RichTextField icon="&#xf007;" fieldLeftBorderWidth="8" width="80%" fieldHint="Username" fieldPaddingLeft="34" />
+
+    <rt:RichTextField icon="&#xf13e;" fieldLeftBorderWidth="4" fieldRightBorderWidth="4" width="80%" fieldHint="Password" />
+
+  </StackLayout>
+</Page>
 ```
 
-Then use any of the available options from the `tns` command line:
+RichTextField attributes:
 
-* [Emulate your project](https://github.com/NativeScript/nativescript-cli#emulate-your-project)
-* [Run your project](https://github.com/NativeScript/nativescript-cli#run-your-project)
-* [Full list of commands](https://github.com/NativeScript/nativescript-cli#the-commands)
+| Attribute | Description |
+| ------ | ------ |
+| icon| can be code value from http://fontawesome.io/cheatsheet/ (e.g. `&#xf123;`) or hex representation (e.g. `0xf123`)
+| fieldHeight| height of the field (e.g. `50`)
+| fieldColor| text color of the field. The value can be known color name or rgba (red/green/blue/alpha) representation  (e.g. `"red"` or `"rgba(34,139,34,0.8)"`). Alpha value can be in the range `0-1` the rest can be `0-255`.
+| fieldPaddingLeft| left hand side space to the parent element (e.g. `"50"`)
+| fieldPaddingRight| right hand side space to the parent element (e.g. `"50"`)
+| textPaddingLeft| the distance between the icon and the text/hint of the field (e.g. `"50"`)
+| fieldBackgroundColor| background color of the field (e.g. `"red"` or `"rgba(34,139,34,0.8)"`)
+| iconColor| icon color (e.g. `"red"` or `"rgba(34,139,34,0.8)"`)
+| fieldHint| string value of the field hint (e.g. `"Custom Hint"`)
+| iconSize| icon size (e.g. `"20"`)
+| fieldHintColor| color value of the hint text (e.g. `"red"` or `"rgba(34,139,34,0.8)"`)
+| fieldBorderColor| color value of the border (e.g. `"red"` or `"rgba(34,139,34,0.8)"`)
+| fieldBorderWidth| border width (e.g. `"2"`). Setting this applies all sides border.
+| fieldLeftBorderWidth| left side border width (e.g. `"2"`). Setting this applies only left side border.
+| fieldRightBorderWidth| right side border width (e.g. `"2"`). Setting this applies only right side border.
+| fieldTopBorderWidth| top side border width (e.g. `"2"`). Setting this applies only top side border.
+| fieldBottomBorderWidth| bottom side border width (e.g. `"2"`). Setting this applies only bottom side border.
 
-## Unittesting
-This plugin automatically adds Jasmine-based unittest support to your plugin.
-Open `demo/app/tests/tests.js` and adjust its contents.
-
-You can read more about this topic [here](https://docs.nativescript.org/tooling/testing).
-
-Once you're ready to test your plugin's API execute one of these commands in the plugin root:
-
-```
-npm run test.ios
-npm run test.android
-```
-
-## Publish
-
-When you have everything ready to publish:
-
-* Bump the version number in `package.json`
-* `npm run build` - **very important** - ensure the latest is built **before** you publish
-* `npm publish`
-
-## TravisCI
-
-The plugin structure comes with fully functional .travis.yml file that deploys the testing app on Android emulator and as a subsequent step runs the tests from [UnitTesting section](https://github.com/NativeScript/nativescript-plugin-seed#unittesting). All you have to do, after cloning the repo and implementing your plugin and tests, is to sign up at [https://travis-ci.org/](https://travis-ci.org/). Then enable your plugin's repo on "https://travis-ci.org/profile/<your github user\>" and that's it. Next time a PR is openend or change is commited to a branch TravisCI will trigger a build testing the code.
-
-To properly show current build status you will have to edit the badge at the start of the README.md file so it matches your repo, user and branch. 
