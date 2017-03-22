@@ -1,0 +1,6 @@
+﻿@import 'nativescript-theme-core/css/core.light.css';
+
+.page{
+    background-image: url("~/images/bg2.jpg");
+    background-size: cover;
+}
