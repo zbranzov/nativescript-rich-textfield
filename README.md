@@ -1,10 +1,12 @@
-# Nativescript-rich-textfield [![Build Status](https://travis-ci.org/zbranzov/nativescript-rich-textfield.svg?branch=master)](https://travis-ci.org/NativeScript/nativescript-rich-textfield)
+# Nativescript-rich-textfield [![Build Status](https://travis-ci.org/zbranzov/nativescript-rich-textfield.svg?branch=master)](https://travis-ci.org/zbranzov/nativescript-rich-textfield)
+
+This plugins let's you easily create textfield with icon that can be effortlessly styled using the exposed properties.
 
 ## Prerequisites
 
-This plugin is using [FontAwesome](http://fontawesome.io/) so as a prerequisite you will have to add [**fonts**](https://github.com/zbranzov/nativescript-rich-textfield/tree/master/demo/app/fonts) folder to your app root  directory containing FontAwesome **.ttf** file.
+This plugin is using [FontAwesome](http://fontawesome.io/) so as a prerequisite you will have to add [**fonts**](https://github.com/zbranzov/nativescript-rich-textfield/tree/master/demo/app/fonts) folder to your app root directory containing FontAwesome **.ttf** file.
 
-## Install
+## Installation
 
 ```
 npm install nativescript-rich-textfield --save
@@ -46,6 +48,7 @@ xmlns:rt="nativescript-rich-textfield">
   </StackLayout>
 </Page>
 ```
+## API
 
 RichTextField attributes:
 
@@ -69,3 +72,6 @@ RichTextField attributes:
 | fieldTopBorderWidth| top side border width (e.g. `"2"`). Setting this applies only top side border.
 | fieldBottomBorderWidth| bottom side border width (e.g. `"2"`). Setting this applies only bottom side border.
 
+## License
+
+Apache License Version 2.0, January 2004

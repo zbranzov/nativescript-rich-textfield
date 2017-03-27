@@ -7,7 +7,10 @@ import color = require("color");
 import stack = require("ui/layouts/stack-layout");
 import font = require('ui/styling/font');
 import observable = require("data/observable");
-import builder = require("ui/builder")
+import builder = require("ui/builder");
+import { Property, PropertyChangeData, PropertyMetadataSettings, PropertyChangedCallback } from "ui/core/dependency-observable";
+import { PropertyMetadata } from "ui/core/proxy";
+import { isAndroid } from "platform";
 
 export class Common extends Observable {
 
@@ -20,42 +23,213 @@ export class Common extends Observable {
   }
 }
 
+let propertyMetadataSettings = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
+
+function onPropertyChanged(data: PropertyChangeData) {
+  let richTextField = <RichTextFieldCommon>data.object;
+  richTextField.onPropertyChanged(data);
+}
+
 export class RichTextFieldCommon extends stack.StackLayout {
   public message: string;
   private textField: textFieldModule.TextField;
   private label: label.Label;
-  stackLayout: stack.StackLayout;
-  icon: string;
-  fieldHeight: number;
-  fieldColor: string;
-  fieldPaddingLeft: string;
-  fieldPaddingRight: string;
-  textPaddingLeft: string;
-  fieldBackgroundColor: string;
-  iconColor: string;
-  fieldHint: string;
-  iconSize: number;
-  fieldHintColor: string;
-  fieldBorderColor: string;
-  fieldBorderWidth: string;
-  fieldLeftBorderWidth: string;
-  fieldRightBorderWidth: string;
-  fieldTopBorderWidth: string;
-  fieldBottomBorderWidth: string;
+  fieldPaddingTop: string;
+
+  public static textPaddingLeftProperty = new Property("textPaddingLeft", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get textPaddingLeft() {
+    return this._getValue(RichTextFieldCommon.textPaddingLeftProperty);
+  }
+
+  set textPaddingLeft(value: string) {
+    this._setValue(RichTextFieldCommon.textPaddingLeftProperty, value);
+  }
+
+  // public static fieldPaddingTopProperty = new Property("fieldPaddingTop", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  // get fieldPaddingTop() {
+  //   return this._getValue(RichTextFieldCommon.fieldPaddingTopProperty);
+  // }
+
+  // set fieldPaddingTop(value: string) {
+  //   this._setValue(RichTextFieldCommon.fieldPaddingTopProperty, value);
+  // }
+
+  public static iconColorProperty = new Property("iconColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get iconColor() {
+    return this._getValue(RichTextFieldCommon.iconColorProperty);
+  }
+
+  set iconColor(value: string) {
+    this._setValue(RichTextFieldCommon.iconColorProperty, value);
+  }
+
+  public static iconProperty = new Property("icon", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get icon() {
+    return this._getValue(RichTextFieldCommon.iconProperty);
+  }
+
+  set icon(value: string) {
+    this._setValue(RichTextFieldCommon.iconProperty, value);
+  }
+
+  public static iconSizeProperty = new Property("iconSize", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get iconSize() {
+    return this._getValue(RichTextFieldCommon.iconSizeProperty);
+  }
+
+  set iconSize(value: number) {
+    this._setValue(RichTextFieldCommon.iconSizeProperty, value);
+  }
+
+  public static fieldHeightProperty = new Property("fieldHeight", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldHeight() {
+    return this._getValue(RichTextFieldCommon.fieldHeightProperty);
+  }
+
+  set fieldHeight(value: number) {
+    this._setValue(RichTextFieldCommon.fieldHeightProperty, value);
+  }
+
+  public static fieldColorProperty = new Property("fieldColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldColor() {
+    return this._getValue(RichTextFieldCommon.fieldColorProperty);
+  }
+
+  set fieldColor(value: string) {
+    this._setValue(RichTextFieldCommon.fieldColorProperty, value);
+  }
+
+  public static fieldPaddingLeftProperty = new Property("fieldPaddingLeft", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldPaddingLeft() {
+    return this._getValue(RichTextFieldCommon.fieldPaddingLeftProperty);
+  }
+
+  set fieldPaddingLeft(value: string) {
+    this._setValue(RichTextFieldCommon.fieldPaddingLeftProperty, value);
+  }
+
+  public static fieldPaddingRightProperty = new Property("fieldPaddingRight", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldPaddingRight() {
+    return this._getValue(RichTextFieldCommon.fieldPaddingRightProperty);
+  }
+
+  set fieldPaddingRight(value: string) {
+    this._setValue(RichTextFieldCommon.fieldPaddingRightProperty, value);
+  }
+
+  public static fieldBackgroundColorProperty = new Property("fieldBackgroundColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldBackgroundColor() {
+    return this._getValue(RichTextFieldCommon.fieldBackgroundColorProperty);
+  }
+
+  set fieldBackgroundColor(value: string) {
+    this._setValue(RichTextFieldCommon.fieldBackgroundColorProperty, value);
+  }
+
+  public static fieldHintProperty = new Property("fieldHint", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldHint() {
+    return this._getValue(RichTextFieldCommon.fieldHintProperty);
+  }
+
+  set fieldHint(value: string) {
+    this._setValue(RichTextFieldCommon.fieldHintProperty, value);
+  }
+
+  public static fieldHintColorProperty = new Property("fieldHintColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldHintColor() {
+    return this._getValue(RichTextFieldCommon.fieldHintColorProperty);
+  }
+
+  set fieldHintColor(value: string) {
+    this._setValue(RichTextFieldCommon.fieldHintColorProperty, value);
+  }
+
+  public static fieldBorderColorProperty = new Property("fieldBorderColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldBorderColor() {
+    return this._getValue(RichTextFieldCommon.fieldBorderColorProperty);
+  }
+
+  set fieldBorderColor(value: string) {
+    this._setValue(RichTextFieldCommon.fieldBorderColorProperty, value);
+  }
+
+  public static fieldBorderWidthProperty = new Property("fieldBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldBorderWidth() {
+    return this._getValue(RichTextFieldCommon.fieldBorderWidthProperty);
+  }
+
+  set fieldBorderWidth(value: string) {
+    this._setValue(RichTextFieldCommon.fieldBorderWidthProperty, value);
+  }
+
+  public static fieldLeftBorderWidthProperty = new Property("fieldLeftBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldLeftBorderWidth() {
+    return this._getValue(RichTextFieldCommon.fieldLeftBorderWidthProperty);
+  }
+
+  set fieldLeftBorderWidth(value: string) {
+    this._setValue(RichTextFieldCommon.fieldLeftBorderWidthProperty, value);
+  }
+
+  public static fieldRightBorderWidthProperty = new Property("fieldRightBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldRightBorderWidth() {
+    return this._getValue(RichTextFieldCommon.fieldRightBorderWidthProperty);
+  }
+
+  set fieldRightBorderWidth(value: string) {
+    this._setValue(RichTextFieldCommon.fieldRightBorderWidthProperty, value);
+  }
+
+  public static fieldTopBorderWidthProperty = new Property("fieldTopBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldTopBorderWidth() {
+    return this._getValue(RichTextFieldCommon.fieldTopBorderWidthProperty);
+  }
+
+  set fieldTopBorderWidth(value: string) {
+    this._setValue(RichTextFieldCommon.fieldTopBorderWidthProperty, value);
+  }
+
+  public static fieldBottomBorderWidthProperty = new Property("fieldBottomBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get fieldBottomBorderWidth() {
+    return this._getValue(RichTextFieldCommon.fieldBottomBorderWidthProperty);
+  }
+
+  set fieldBottomBorderWidth(value: string) {
+    this._setValue(RichTextFieldCommon.fieldBottomBorderWidthProperty, value);
+  }
 
   constructor() {
     super();
 
-    this.fieldHeight = 40;
     this.textField = new textFieldModule.TextField();
+    this.label = new label.Label();
+
+    this.fieldHeight = 40;
+    this.height = this.fieldHeight;
     this.textField.hint = "Custom hint";
     this.textField.setInlineStyle("placeholder-color:rgba(255,255,255, 0.5); padding-left: 20;padding-right:40;width: 100%;color:rgba(255,255,255, 1);");
-    this.textField.setInlineStyle(`background-color:rgba(255,255,255, 0.4);padding-top: 10;padding-bottom: 10;`);
+    this.textField.setInlineStyle(`background-color:rgba(255,255,255, 0.4);padding-top: 12;padding-bottom: 8;`);
     this.textField.height = this.fieldHeight;
     this.textField.borderColor = new color.Color("white");
-
     this.iconSize = 20;
-    this.label = new label.Label();
     this.label.text = "\uf007";
     this.label.setInlineStyle(`background-color: rgba(255,255,255, 0.4);color:rgba(255,255,255, 0.5);padding-left: 40;margin-top: 0;`);
     this.label.setInlineStyle(`padding-top: 10;padding-bottom: 10;font-family: FontAwesome,fontawesome-webfont;vertical-align: center;`);
@@ -72,12 +246,9 @@ export class RichTextFieldCommon extends stack.StackLayout {
   onLoad(eventData) {
 
     let stackLayout = eventData.object;
-    if (stackLayout.icon) {
-      let icon = stackLayout.icon;
-      if (typeof icon === "number") {
-        icon = String.fromCharCode(icon);
-      }
-      this.label.text = icon;
+
+    if (Number(stackLayout.fieldHeight) > 40) {
+      this.textField.setInlineStyle("padding-bottom:10;");
     }
 
     if (stackLayout.fieldHeight) {
@@ -91,74 +262,121 @@ export class RichTextFieldCommon extends stack.StackLayout {
       }
     }
 
-    if (stackLayout.textPaddingLeft) {
-      this.textField.setInlineStyle(`padding-left: ${stackLayout.textPaddingLeft};`);
-    }
+    // if (stackLayout.fieldPaddingTop) {
+    //   this.label.setInlineStyle(`padding-top: ${stackLayout.fieldPaddingTop};`);
+    // }
 
-    if (stackLayout.fieldPaddingRight) {
-      this.textField.setInlineStyle(`padding-right: ${stackLayout.fieldPaddingRight};`);
-    }
+  }
 
-    if (stackLayout.fieldPaddingLeft) {
-      this.label.setInlineStyle(`padding-left: ${stackLayout.fieldPaddingLeft};`);
-    }
+  onPropertyChanged(data: PropertyChangeData) {
+    switch (data.property.name) {
 
-    if (stackLayout.fieldBackgroundColor) {
-      this.label.setInlineStyle(`background-color: ${stackLayout.fieldBackgroundColor};`);
-      this.textField.setInlineStyle(`background-color: ${stackLayout.fieldBackgroundColor};`);
-    }
+      case "iconColor": {
+        this.label.setInlineStyle(`color: ${data.newValue};`);
+        break;
+      }
 
-    if (stackLayout.iconColor) {
-      this.label.setInlineStyle(`color: ${stackLayout.iconColor};`);
-    }
+      case "icon": {
+        let icon = data.newValue;
+        if (typeof icon === "number") {
+          icon = String.fromCharCode(icon);
+        }
+        this.label.text = icon;
+        break;
+      }
 
-    if (stackLayout.fieldColor) {
-      this.textField.setInlineStyle(`color: ${stackLayout.fieldColor};`);
-    }
+      case "fieldHeight": {
+        this.label.setInlineStyle(`height: ${data.newValue};`);
+        this.textField.setInlineStyle(`height: ${data.newValue};`);
+        // vertical alignment doesnt work
+        let labelPadding = this.calculateLabelPadding(<RichTextFieldCommon>data.object);
+        this.label.setInlineStyle(`padding-top: ${labelPadding};`);
+        if (this.height < Number(data.newValue)) {
+          this.height = data.newValue;
+        }
+        break;
+      }
 
-    if (stackLayout.iconSize) {
-      this.iconSize = stackLayout.iconSize;
-      this.label.fontSize = stackLayout.iconSize;
-    }
+      case "textPaddingLeft": {
+        this.textField.setInlineStyle(`padding-left: ${data.newValue};`);
+        break;
+      }
 
-    if (stackLayout.fieldHint) {
-      this.textField.hint = stackLayout.fieldHint;
-    }
+      case "fieldPaddingRight": {
+        this.textField.setInlineStyle(`padding-right: ${data.newValue};`);
+        break;
+      }
 
-    if (stackLayout.fieldHintColor) {
-      this.textField.setInlineStyle(`placeholder-color: ${stackLayout.fieldHintColor};`);
-    }
+      case "fieldPaddingLeft": {
+        this.label.setInlineStyle(`padding-left: ${data.newValue};`);
+        break;
+      }
 
-    if (stackLayout.fieldBorderColor) {
-      this.textField.setInlineStyle(`border-color: ${stackLayout.fieldBorderColor};`);
-      this.label.setInlineStyle(`border-color: ${stackLayout.fieldBorderColor};`);
-    }
+      case "fieldBackgroundColor": {
+        this.label.setInlineStyle(`background-color: ${data.newValue};`);
+        this.textField.setInlineStyle(`background-color: ${data.newValue};`);
+        break;
+      }
 
-    if (stackLayout.fieldBorderWidth) {
-      this.textField.borderTopWidth = stackLayout.fieldBorderWidth;
-      this.textField.borderBottomWidth = stackLayout.fieldBorderWidth;
-      this.textField.borderRightWidth = stackLayout.fieldBorderWidth;
-      this.label.borderTopWidth = stackLayout.fieldBorderWidth;
-      this.label.borderBottomWidth = stackLayout.fieldBorderWidth;
-      this.label.borderLeftWidth = stackLayout.fieldBorderWidth;
-    }
+      case "fieldColor": {
+        this.textField.setInlineStyle(`color: ${data.newValue};`);
+        break;
+      }
 
-    if (stackLayout.fieldLeftBorderWidth) {
-      this.label.borderLeftWidth = stackLayout.fieldLeftBorderWidth;
-    }
+      case "iconSize": {
+        this.iconSize = data.newValue;
+        this.label.fontSize = data.newValue;
+        break;
+      }
 
-    if (stackLayout.fieldRightBorderWidth) {
-      this.textField.borderRightWidth = stackLayout.fieldRightBorderWidth;
-    }
+      case "fieldHint": {
+        this.textField.hint = data.newValue;
+        break;
+      }
 
-    if (stackLayout.fieldTopBorderWidth) {
-      this.textField.borderTopWidth = stackLayout.fieldTopBorderWidth;
-      this.label.borderTopWidth = stackLayout.fieldTopBorderWidth;
-    }
+      case "fieldHintColor": {
+        this.textField.setInlineStyle(`placeholder-color: ${data.newValue};`);
+        break;
+      }
 
-    if (stackLayout.fieldBottomBorderWidth) {
-      this.textField.borderBottomWidth = stackLayout.fieldBottomBorderWidth;
-      this.label.borderBottomWidth = stackLayout.fieldBottomBorderWidth;
+      case "fieldBorderColor": {
+        this.textField.setInlineStyle(`border-color: ${data.newValue};`);
+        this.label.setInlineStyle(`border-color: ${data.newValue};`);
+        break;
+      }
+
+      case "fieldBorderWidth": {
+        let fieldBorder = data.newValue;
+        this.textField.borderTopWidth = fieldBorder;
+        this.textField.borderBottomWidth = fieldBorder;
+        this.textField.borderRightWidth = fieldBorder;
+        this.label.borderTopWidth = fieldBorder;
+        this.label.borderBottomWidth = fieldBorder;
+        this.label.borderLeftWidth = fieldBorder;
+        break;
+      }
+
+      case "fieldLeftBorderWidth": {
+        this.label.borderLeftWidth = data.newValue;
+        break;
+      }
+
+      case "fieldRightBorderWidth": {
+        this.textField.borderRightWidth = data.newValue;
+        break;
+      }
+
+      case "fieldTopBorderWidth": {
+        this.textField.borderTopWidth = data.newValue;
+        this.label.borderTopWidth = data.newValue;
+        break;
+      }
+
+      case "fieldBottomBorderWidth": {
+        this.textField.borderBottomWidth = data.newValue;
+        this.label.borderBottomWidth = data.newValue;
+        break;
+      }
     }
   }
 
