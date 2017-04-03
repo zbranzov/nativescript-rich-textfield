@@ -12,208 +12,207 @@ import { Property, PropertyChangeData, PropertyMetadataSettings, PropertyChanged
 import { PropertyMetadata } from "ui/core/proxy";
 import { isAndroid } from "platform";
 
-export class Common extends Observable {
-
-  constructor() {
-    super();
-  }
-
-  public greet() {
-    return "Hello, NS";
-  }
-}
-
 let propertyMetadataSettings = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
 
 function onPropertyChanged(data: PropertyChangeData) {
-  let richTextField = <RichTextFieldCommon>data.object;
+  let richTextField = <RichTextField>data.object;
   richTextField.onPropertyChanged(data);
 }
 
-export class RichTextFieldCommon extends stack.StackLayout {
+export class RichTextField extends stack.StackLayout {
   public message: string;
   private textField: textFieldModule.TextField;
   private label: label.Label;
   fieldPaddingTop: string;
 
-  public static textPaddingLeftProperty = new Property("textPaddingLeft", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static secureProperty = new Property("secure", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+
+  get secure() {
+    return this._getValue(RichTextField.secureProperty);
+  }
+
+  set secure(value: boolean) {
+    this._setValue(RichTextField.secureProperty, value);
+  }
+
+  public static textPaddingLeftProperty = new Property("textPaddingLeft", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get textPaddingLeft() {
-    return this._getValue(RichTextFieldCommon.textPaddingLeftProperty);
+    return this._getValue(RichTextField.textPaddingLeftProperty);
   }
 
   set textPaddingLeft(value: string) {
-    this._setValue(RichTextFieldCommon.textPaddingLeftProperty, value);
+    this._setValue(RichTextField.textPaddingLeftProperty, value);
   }
 
-  // public static fieldPaddingTopProperty = new Property("fieldPaddingTop", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  // public static fieldPaddingTopProperty = new Property("fieldPaddingTop", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   // get fieldPaddingTop() {
-  //   return this._getValue(RichTextFieldCommon.fieldPaddingTopProperty);
+  //   return this._getValue(RichTextField.fieldPaddingTopProperty);
   // }
 
   // set fieldPaddingTop(value: string) {
-  //   this._setValue(RichTextFieldCommon.fieldPaddingTopProperty, value);
+  //   this._setValue(RichTextField.fieldPaddingTopProperty, value);
   // }
 
-  public static iconColorProperty = new Property("iconColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static iconColorProperty = new Property("iconColor", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get iconColor() {
-    return this._getValue(RichTextFieldCommon.iconColorProperty);
+    return this._getValue(RichTextField.iconColorProperty);
   }
 
   set iconColor(value: string) {
-    this._setValue(RichTextFieldCommon.iconColorProperty, value);
+    this._setValue(RichTextField.iconColorProperty, value);
   }
 
-  public static iconProperty = new Property("icon", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static iconProperty = new Property("icon", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get icon() {
-    return this._getValue(RichTextFieldCommon.iconProperty);
+    return this._getValue(RichTextField.iconProperty);
   }
 
   set icon(value: string) {
-    this._setValue(RichTextFieldCommon.iconProperty, value);
+    this._setValue(RichTextField.iconProperty, value);
   }
 
-  public static iconSizeProperty = new Property("iconSize", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static iconSizeProperty = new Property("iconSize", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get iconSize() {
-    return this._getValue(RichTextFieldCommon.iconSizeProperty);
+    return this._getValue(RichTextField.iconSizeProperty);
   }
 
   set iconSize(value: number) {
-    this._setValue(RichTextFieldCommon.iconSizeProperty, value);
+    this._setValue(RichTextField.iconSizeProperty, value);
   }
 
-  public static fieldHeightProperty = new Property("fieldHeight", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldHeightProperty = new Property("fieldHeight", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldHeight() {
-    return this._getValue(RichTextFieldCommon.fieldHeightProperty);
+    return this._getValue(RichTextField.fieldHeightProperty);
   }
 
   set fieldHeight(value: number) {
-    this._setValue(RichTextFieldCommon.fieldHeightProperty, value);
+    this._setValue(RichTextField.fieldHeightProperty, value);
   }
 
-  public static fieldColorProperty = new Property("fieldColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldColorProperty = new Property("fieldColor", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldColor() {
-    return this._getValue(RichTextFieldCommon.fieldColorProperty);
+    return this._getValue(RichTextField.fieldColorProperty);
   }
 
   set fieldColor(value: string) {
-    this._setValue(RichTextFieldCommon.fieldColorProperty, value);
+    this._setValue(RichTextField.fieldColorProperty, value);
   }
 
-  public static fieldPaddingLeftProperty = new Property("fieldPaddingLeft", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldPaddingLeftProperty = new Property("fieldPaddingLeft", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldPaddingLeft() {
-    return this._getValue(RichTextFieldCommon.fieldPaddingLeftProperty);
+    return this._getValue(RichTextField.fieldPaddingLeftProperty);
   }
 
   set fieldPaddingLeft(value: string) {
-    this._setValue(RichTextFieldCommon.fieldPaddingLeftProperty, value);
+    this._setValue(RichTextField.fieldPaddingLeftProperty, value);
   }
 
-  public static fieldPaddingRightProperty = new Property("fieldPaddingRight", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldPaddingRightProperty = new Property("fieldPaddingRight", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldPaddingRight() {
-    return this._getValue(RichTextFieldCommon.fieldPaddingRightProperty);
+    return this._getValue(RichTextField.fieldPaddingRightProperty);
   }
 
   set fieldPaddingRight(value: string) {
-    this._setValue(RichTextFieldCommon.fieldPaddingRightProperty, value);
+    this._setValue(RichTextField.fieldPaddingRightProperty, value);
   }
 
-  public static fieldBackgroundColorProperty = new Property("fieldBackgroundColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldBackgroundColorProperty = new Property("fieldBackgroundColor", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldBackgroundColor() {
-    return this._getValue(RichTextFieldCommon.fieldBackgroundColorProperty);
+    return this._getValue(RichTextField.fieldBackgroundColorProperty);
   }
 
   set fieldBackgroundColor(value: string) {
-    this._setValue(RichTextFieldCommon.fieldBackgroundColorProperty, value);
+    this._setValue(RichTextField.fieldBackgroundColorProperty, value);
   }
 
-  public static fieldHintProperty = new Property("fieldHint", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldHintProperty = new Property("fieldHint", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldHint() {
-    return this._getValue(RichTextFieldCommon.fieldHintProperty);
+    return this._getValue(RichTextField.fieldHintProperty);
   }
 
   set fieldHint(value: string) {
-    this._setValue(RichTextFieldCommon.fieldHintProperty, value);
+    this._setValue(RichTextField.fieldHintProperty, value);
   }
 
-  public static fieldHintColorProperty = new Property("fieldHintColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldHintColorProperty = new Property("fieldHintColor", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldHintColor() {
-    return this._getValue(RichTextFieldCommon.fieldHintColorProperty);
+    return this._getValue(RichTextField.fieldHintColorProperty);
   }
 
   set fieldHintColor(value: string) {
-    this._setValue(RichTextFieldCommon.fieldHintColorProperty, value);
+    this._setValue(RichTextField.fieldHintColorProperty, value);
   }
 
-  public static fieldBorderColorProperty = new Property("fieldBorderColor", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldBorderColorProperty = new Property("fieldBorderColor", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldBorderColor() {
-    return this._getValue(RichTextFieldCommon.fieldBorderColorProperty);
+    return this._getValue(RichTextField.fieldBorderColorProperty);
   }
 
   set fieldBorderColor(value: string) {
-    this._setValue(RichTextFieldCommon.fieldBorderColorProperty, value);
+    this._setValue(RichTextField.fieldBorderColorProperty, value);
   }
 
-  public static fieldBorderWidthProperty = new Property("fieldBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldBorderWidthProperty = new Property("fieldBorderWidth", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldBorderWidth() {
-    return this._getValue(RichTextFieldCommon.fieldBorderWidthProperty);
+    return this._getValue(RichTextField.fieldBorderWidthProperty);
   }
 
   set fieldBorderWidth(value: string) {
-    this._setValue(RichTextFieldCommon.fieldBorderWidthProperty, value);
+    this._setValue(RichTextField.fieldBorderWidthProperty, value);
   }
 
-  public static fieldLeftBorderWidthProperty = new Property("fieldLeftBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldLeftBorderWidthProperty = new Property("fieldLeftBorderWidth", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldLeftBorderWidth() {
-    return this._getValue(RichTextFieldCommon.fieldLeftBorderWidthProperty);
+    return this._getValue(RichTextField.fieldLeftBorderWidthProperty);
   }
 
   set fieldLeftBorderWidth(value: string) {
-    this._setValue(RichTextFieldCommon.fieldLeftBorderWidthProperty, value);
+    this._setValue(RichTextField.fieldLeftBorderWidthProperty, value);
   }
 
-  public static fieldRightBorderWidthProperty = new Property("fieldRightBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldRightBorderWidthProperty = new Property("fieldRightBorderWidth", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldRightBorderWidth() {
-    return this._getValue(RichTextFieldCommon.fieldRightBorderWidthProperty);
+    return this._getValue(RichTextField.fieldRightBorderWidthProperty);
   }
 
   set fieldRightBorderWidth(value: string) {
-    this._setValue(RichTextFieldCommon.fieldRightBorderWidthProperty, value);
+    this._setValue(RichTextField.fieldRightBorderWidthProperty, value);
   }
 
-  public static fieldTopBorderWidthProperty = new Property("fieldTopBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldTopBorderWidthProperty = new Property("fieldTopBorderWidth", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldTopBorderWidth() {
-    return this._getValue(RichTextFieldCommon.fieldTopBorderWidthProperty);
+    return this._getValue(RichTextField.fieldTopBorderWidthProperty);
   }
 
   set fieldTopBorderWidth(value: string) {
-    this._setValue(RichTextFieldCommon.fieldTopBorderWidthProperty, value);
+    this._setValue(RichTextField.fieldTopBorderWidthProperty, value);
   }
 
-  public static fieldBottomBorderWidthProperty = new Property("fieldBottomBorderWidth", "RichTextFieldCommon", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldBottomBorderWidthProperty = new Property("fieldBottomBorderWidth", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
   get fieldBottomBorderWidth() {
-    return this._getValue(RichTextFieldCommon.fieldBottomBorderWidthProperty);
+    return this._getValue(RichTextField.fieldBottomBorderWidthProperty);
   }
 
   set fieldBottomBorderWidth(value: string) {
-    this._setValue(RichTextFieldCommon.fieldBottomBorderWidthProperty, value);
+    this._setValue(RichTextField.fieldBottomBorderWidthProperty, value);
   }
 
   constructor() {
@@ -276,6 +275,11 @@ export class RichTextFieldCommon extends stack.StackLayout {
         break;
       }
 
+      case "secure": {
+        this.textField.secure = data.newValue;
+        break;
+      }
+
       case "icon": {
         let icon = data.newValue;
         if (typeof icon === "number") {
@@ -289,7 +293,7 @@ export class RichTextFieldCommon extends stack.StackLayout {
         this.label.setInlineStyle(`height: ${data.newValue};`);
         this.textField.setInlineStyle(`height: ${data.newValue};`);
         // vertical alignment doesnt work
-        let labelPadding = this.calculateLabelPadding(<RichTextFieldCommon>data.object);
+        let labelPadding = this.calculateLabelPadding(<RichTextField>data.object);
         this.label.setInlineStyle(`padding-top: ${labelPadding};`);
         if (this.height < Number(data.newValue)) {
           this.height = data.newValue;
@@ -380,7 +384,7 @@ export class RichTextFieldCommon extends stack.StackLayout {
     }
   }
 
-  private calculateLabelPadding(stackLayout: RichTextFieldCommon) {
+  private calculateLabelPadding(stackLayout: RichTextField) {
     let labelPadding = (Number(stackLayout.fieldHeight) - Number(this.iconSize)) / 2;
     if (stackLayout.fieldBorderWidth) {
       labelPadding = labelPadding - Number(stackLayout.fieldBorderWidth);
@@ -391,18 +395,6 @@ export class RichTextFieldCommon extends stack.StackLayout {
     }
 
     return labelPadding;
-  }
-}
-
-export class Utils {
-  public static SUCCESS_MSG(): string {
-    let msg = `Your plugin is working on ${app.android ? 'Android' : 'iOS'}.`;
-
-    setTimeout(() => {
-      dialogs.alert(`${msg} For real. It's really working :)`).then(() => console.log(`Dialog closed.`));
-    }, 2000);
-
-    return msg;
   }
 }
 

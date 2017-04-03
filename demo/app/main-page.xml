@@ -18,7 +18,7 @@ xmlns:rt="nativescript-rich-textfield">
 
     <rt:RichTextField icon="&#xf007;" fieldBorderColor="rgba(255,255,255,1)"  height="50" fieldLeftBorderWidth="8" width="80%" fieldHint="Username" fieldPaddingLeft="34" />
 
-    <rt:RichTextField icon="&#xf13e;" fieldBorderColor="rgba(255,255,255,1)"  fieldLeftBorderWidth="4" fieldRightBorderWidth="4" width="80%" fieldHint="Password" />
+    <rt:RichTextField icon="&#xf13e;" fieldBorderColor="rgba(255,255,255,1)" secure="true"  fieldLeftBorderWidth="4" fieldRightBorderWidth="4" width="80%" fieldHint="Password" />
 
   </StackLayout>
 </Page>

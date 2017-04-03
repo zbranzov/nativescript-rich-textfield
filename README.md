@@ -43,7 +43,7 @@ xmlns:rt="nativescript-rich-textfield">
 
     <rt:RichTextField icon="&#xf007;" fieldLeftBorderWidth="8" width="80%" fieldHint="Username" fieldPaddingLeft="34" />
 
-    <rt:RichTextField icon="&#xf13e;" fieldLeftBorderWidth="4" fieldRightBorderWidth="4" width="80%" fieldHint="Password" />
+    <rt:RichTextField icon="&#xf13e;" secure="true" fieldLeftBorderWidth="4" fieldRightBorderWidth="4" width="80%" fieldHint="Password" />
 
   </StackLayout>
 </Page>
@@ -71,6 +71,7 @@ RichTextField attributes:
 | fieldRightBorderWidth| right side border width (e.g. `"2"`). Setting this applies only right side border.
 | fieldTopBorderWidth| top side border width (e.g. `"2"`). Setting this applies only top side border.
 | fieldBottomBorderWidth| bottom side border width (e.g. `"2"`). Setting this applies only bottom side border.
+| secure| specify whether to mask the input of the field. Useful for passwords (e.g. `"true"`).
 
 ## License
 
