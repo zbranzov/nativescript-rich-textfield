@@ -1,15 +1,12 @@
-import { Observable } from 'data/observable';
 import stack = require("ui/layouts/stack-layout");
 import { Property, PropertyChangeData } from "ui/core/dependency-observable";
-export declare class Common extends Observable {
-    constructor();
-    greet(): string;
-}
-export declare class RichTextFieldCommon extends stack.StackLayout {
+export declare class RichTextField extends stack.StackLayout {
     message: string;
     private textField;
     private label;
     fieldPaddingTop: string;
+    static secureProperty: Property;
+    secure: boolean;
     static textPaddingLeftProperty: Property;
     textPaddingLeft: string;
     static iconColorProperty: Property;
@@ -48,7 +45,4 @@ export declare class RichTextFieldCommon extends stack.StackLayout {
     onLoad(eventData: any): void;
     onPropertyChanged(data: PropertyChangeData): void;
     private calculateLabelPadding(stackLayout);
-}
-export declare class Utils {
-    static SUCCESS_MSG(): string;
 }

@@ -2,7 +2,7 @@
   "name": "nativescript-rich-textfield",
   "version": "1.0.0",
   "description": "Nativescript plugin that provides textfield with icon and exposes a few additional attributes for styling",
-  "main": "rich-textfield",
+  "main": "rich-textfield.common",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
