@@ -2,15 +2,14 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "declaration": true,
+        "declaration": false,
         "removeComments": true,
         "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": [
-            "es2016"
+            "es2016","dom"
         ],
-        "sourceMap": true,
         "pretty": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
@@ -24,13 +23,12 @@
             "./node_modules/@types",
             "./node_modules"
         ],
-        "types": [
-        ]
+        "types": []
     },
     "exclude": [
-        "demo",
-        "demo-angular",
-        "node_modules"
+        "node_modules",
+        "platforms",
+        "**/*.aot.ts"
     ],
     "compileOnSave": false
 }
