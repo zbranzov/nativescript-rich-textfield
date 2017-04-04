@@ -4,11 +4,12 @@ export declare class RichTextField extends stack.StackLayout {
     message: string;
     private textField;
     private label;
-    fieldPaddingTop: string;
     static secureProperty: Property;
     secure: boolean;
     static textPaddingLeftProperty: Property;
     textPaddingLeft: string;
+    static fieldPaddingTopProperty: Property;
+    fieldPaddingTop: string;
     static iconColorProperty: Property;
     iconColor: string;
     static iconProperty: Property;

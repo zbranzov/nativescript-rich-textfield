@@ -12,3 +12,12 @@ demo/platforms
 demo/node_modules
 node_modules
 demo/.vscode/launch.json
+demo-angular/app/*.js
+!demo-angular/karma.conf.js
+!demo-angular/app/tests/*.js
+demo-angular/*.d.ts
+!demo-angular/references.d.ts
+demo-angular/lib
+demo-angular/platforms
+demo-angular/node_modules
+demo-angular/.vscode/launch.json

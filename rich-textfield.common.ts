@@ -23,7 +23,7 @@ export class RichTextField extends stack.StackLayout {
   public message: string;
   private textField: textFieldModule.TextField;
   private label: label.Label;
-  fieldPaddingTop: string;
+  //fieldPaddingTop: string;
 
   public static secureProperty = new Property("secure", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
@@ -45,15 +45,15 @@ export class RichTextField extends stack.StackLayout {
     this._setValue(RichTextField.textPaddingLeftProperty, value);
   }
 
-  // public static fieldPaddingTopProperty = new Property("fieldPaddingTop", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
+  public static fieldPaddingTopProperty = new Property("fieldPaddingTop", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
-  // get fieldPaddingTop() {
-  //   return this._getValue(RichTextField.fieldPaddingTopProperty);
-  // }
+  get fieldPaddingTop() {
+    return this._getValue(RichTextField.fieldPaddingTopProperty);
+  }
 
-  // set fieldPaddingTop(value: string) {
-  //   this._setValue(RichTextField.fieldPaddingTopProperty, value);
-  // }
+  set fieldPaddingTop(value: string) {
+    this._setValue(RichTextField.fieldPaddingTopProperty, value);
+  }
 
   public static iconColorProperty = new Property("iconColor", "RichTextField", new PropertyMetadata("", propertyMetadataSettings, onPropertyChanged));
 
@@ -243,7 +243,6 @@ export class RichTextField extends stack.StackLayout {
   }
 
   onLoad(eventData) {
-
     let stackLayout = eventData.object;
 
     if (Number(stackLayout.fieldHeight) > 40) {
@@ -261,9 +260,9 @@ export class RichTextField extends stack.StackLayout {
       }
     }
 
-    // if (stackLayout.fieldPaddingTop) {
-    //   this.label.setInlineStyle(`padding-top: ${stackLayout.fieldPaddingTop};`);
-    // }
+    if (stackLayout.fieldPaddingTop) {
+      this.label.setInlineStyle(`padding-top: ${stackLayout.fieldPaddingTop};`);
+    }
 
   }
 
@@ -272,6 +271,11 @@ export class RichTextField extends stack.StackLayout {
 
       case "iconColor": {
         this.label.setInlineStyle(`color: ${data.newValue};`);
+        break;
+      }
+
+      case "fieldPaddingTop": {
+        this.label.setInlineStyle(`padding-top: ${data.newValue};`);
         break;
       }
 
